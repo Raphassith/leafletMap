@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Leaflet Get latlong Marker.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./mapIcon.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+    <script>
+        var lat = 13.331580;
+        var lng = 100.967527;
+
+        var places = [['ม.กระโดน', 13.335687, 100.968302],
+        ['Galaxy 2000', 13.327194, 100.964591],
+        ['Excise 2', 13.331482, 100.967760],];
+
+        var map = new L.map('map').setView([lat, lng], 17);
+
+        var tiles = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        var marker = new L.marker([lat, lng])
+            .bindPopup('Marker')
+            .on("click", () => { alert('Marker') })
+            .addTo(map);
+
+        var circle = new L.circle([lat, lng], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 50
+        }).addTo(map);
+
+        var polygon = new L.polygon([
+            [13.331749, 100.968229],
+            [13.330815, 100.967584],
+            [13.331419, 100.966605],
+            [13.332342, 100.967275]
+        ]).addTo(map);
+
+    </script>
+</body>
+
+</html>
