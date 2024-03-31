@@ -62,6 +62,18 @@
             [13.332342, 100.967275]
         ]).addTo(map);
 
+        var markerIcon = new L.marker([lat, lng], {
+            icon: L.icon({
+                iconUrl: './makers/red.png',
+                iconSize: [24, 40],
+                iconAnchor: [12, 40],
+                popupAnchor: [0, -40]
+            })
+        })
+        .bindPopup('Marker Icon')
+        .on("click", () => { alert('Marker Icon') })
+        .addTo(map);Ï
+
     </script>
 </body>
 
