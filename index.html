@@ -31,7 +31,13 @@
     <script>
         var lat = 13.331580;
         var lng = 100.967527;
-        var map = new L.map('map').setView([lat, lng], 17)
+        var map;
+
+        if (map !== undefined && map !== null) {
+            map.remove(); // คืนค่า Memory และหยุดการทำงานทั้งหมดของ Leaflet
+        }
+        
+        map = new L.map('map').setView([lat, lng], 17)
             .on("click", getMapCenter)
             .on("move", getMapCenter)
             .on("movestart", getMapCenter)
