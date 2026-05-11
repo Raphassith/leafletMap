@@ -58,8 +58,11 @@
         function setMakers(cate) {
             let data = (cate == null) ? places : places.filter(row => row.cate == cate);
 
-            markers.remove();
-            markers = new L.layerGroup().addTo(map);
+            // --- markers.remove(); ---
+            // --- markers = new L.layerGroup().addTo(map); ---
+            
+            // --- ขั้นตอนสำคัญ: ล้าง Marker เก่าทั้งหมดในกลุ่มนี้ออก ---
+            markers.clearLayers();
 
             for (let i = 0; i < data.length; i++) {
                 var marker = new L.marker([data[i].lat, data[i].lng], {
