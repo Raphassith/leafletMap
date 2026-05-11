@@ -36,7 +36,13 @@
         ['Galaxy 2000', 13.327194, 100.964591],
         ['Excise 2', 13.331482, 100.967760],];
 
-        var map = new L.map('map').setView([lat, lng], 17);
+        var map;
+
+        if (map !== undefined && map !== null) {
+            map.remove(); // คืนค่า Memory และหยุดการทำงานทั้งหมดของ Leaflet
+        }
+
+        map = new L.map('map').setView([lat, lng], 17);
 
         var tiles = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
